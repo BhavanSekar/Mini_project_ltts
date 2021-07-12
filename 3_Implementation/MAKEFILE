@@ -1,0 +1,70 @@
+#Targetname : dependencies
+#<TAB>command
+TEST_PROJ_NAME = Shapes_Calculator
+BUILD_DIR = build
+
+#Include path
+INC = inc
+UNITY = unity
+TEST = test
+
+#Contains all the source files
+SRC = src/*.c
+
+#Build directory
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
+
+#Including the required files present in other folders
+INC_FILES = -I$(INC) -I$(UNITY)
+
+OUTPUT = $(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)
+
+TEST_SRC = $(SRC)\
+$(TEST)\
+$(UNITY)
+
+TEST_OUTPUT = $(BUILD_DIR)/Test_$(TEST_PROJ_NAME).$(EXEC)
+
+#Checks whether the OS is Windows or Linux and sets the executable file extension as .exe or .o respectively
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
+endif
+
+
+#compiling and generating the .exe or .out file
+all: $(SRC) $(BUILD_DIR)
+	gcc -I $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+
+#executing the program
+run: all
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+
+# Removing the built files
+clean:
+	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+
+#valgrind is for Linux OS 
+#For windows OS use Dr.Memory
+#check the heap memory usage 
+valgrind :
+	valgrind $(call FixPath,$(TEST_OUTPUT))
+
+#Code Coverage Check
+coverageCheck:$(BUILD_DIR)
+	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(SRC) $(INC_TEST) -o $(OUTPUT)
+	./$(OUTPUT)
+
+#test the testcases 
+test:$(BUILD_DIR)
+	gcc $(TEST_SRC) $(INC_FILES) -o $(TEST_OUTPUT) 
+	./$(TEST_OUTPUT)
+

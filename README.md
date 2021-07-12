@@ -1,5 +1,5 @@
 # Calculator
-Desdigning a calculator that performs normal, scientific and bit-wise operations.
+Designing a 
 
 ## Folder Structure
 
