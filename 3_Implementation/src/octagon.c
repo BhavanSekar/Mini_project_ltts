@@ -16,6 +16,9 @@ error_code octagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 8*side;
     res->area = 2*pow(side,2)*(1+sqrt(2));
     res->interior_angle = 135;

@@ -16,6 +16,10 @@ error_code cylinder(double radius, double height, three_dim *res){
     if(radius == 0.0 || height == 0.0){
         return NULL;
     }
+    else if(radius<0 || height<0){
+        radius = fabs(radius);
+        height = fabs(height);
+    }
     res->volume = pow(radius,2)*height*PI;
     res->lateral_surface_area = 2*radius*height*PI;
     res->total_surface_area = 2*radius*(radius + height)*PI;

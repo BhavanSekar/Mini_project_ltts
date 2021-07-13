@@ -16,6 +16,9 @@ error_code equilateral_triangle(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 3*side;
     res->area = (sqrt(3)/4)*(pow(side,2));
     res->interior_angle = 60;

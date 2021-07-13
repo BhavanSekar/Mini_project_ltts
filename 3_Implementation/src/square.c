@@ -16,6 +16,9 @@ error_code square(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 4*side;
     res->area = pow(side,2);
     res->interior_angle = 90;

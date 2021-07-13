@@ -16,6 +16,9 @@ error_code hexagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 6*side;
     res->area = (3*sqrt(3)*pow(side,2))/2;
     res->interior_angle = 120;

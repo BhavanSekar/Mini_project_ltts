@@ -16,6 +16,11 @@ error_code scalene_triangle(double side1, double side2, double side3, irregular_
     if(side1 == 0.0 || side2 == 0.0 || side3 == 0.0){
         return NULL;
     }
+    else if(side1<0 || side2<0 || side3<0){
+        side1 = fabs(side1);
+        side2 = fabs(side2);
+        side3 = fabs(side3);
+    }
     else{
         int semi = 0;
         res->perimeter = side1 + side2 + side3;

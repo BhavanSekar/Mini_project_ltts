@@ -16,6 +16,10 @@ error_code rhombus(double diagonal1, double diagonal2, irregular_and_curves *res
     if(diagonal1==0.0 || diagonal2==0.0){
         return NULL;
     }
+    else if(diagonal1<0 || diagonal2<0){
+        diagonal1 = fabs(diagonal1);
+        diagonal2 = fabs(diagonal2);
+    }
     res->perimeter = 2*sqrt(pow(diagonal1,2)+pow(diagonal2,2));
     res->area = diagonal1*diagonal2/2;
     return SUCCESS;

@@ -16,6 +16,9 @@ error_code sphere(double radius, three_dim_other *res){
     if(radius == 0.0){
         return NULL;
     }
+    else if(radius<0){
+        radius = fabs(radius);
+    }
     res->volume = (4/3)*pow(radius,3)*PI;
     res->surface_area = 4*pow(radius,2)*PI;
     return SUCCESS;

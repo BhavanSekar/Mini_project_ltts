@@ -16,6 +16,9 @@ error_code heptagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 7*side;
     res->area = (7/4)*pow(side,2)*cot(180/7);
     res->interior_angle = 128.57;

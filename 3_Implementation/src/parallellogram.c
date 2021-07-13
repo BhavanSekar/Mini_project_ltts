@@ -16,6 +16,11 @@ error_code parallellogram(double side, double base, double height, irregular_and
     if(side == 0.0 || base == 0.0 || height == 0.0){
         return NULL;
     }
+    else if(side<0 || base<0 || height<0){
+        side = fabs(side);
+        base = fabs(base);
+        height = fabs(height);
+    }
     res->perimeter = 2*(side + base);
     res->area = base*height;
     return SUCCESS;

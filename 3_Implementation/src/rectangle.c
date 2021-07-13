@@ -16,6 +16,10 @@ error_code rectangle(double length, double breadth, irregular_and_curves *res){
     if(length==0.0 || breadth==0.0){
         return NULL;
     }
+    else if(length<0 || breadth<0){
+        length = fabs(length);
+        breadth = fabs(breadth);
+    }
     res->perimeter = 2*(length + breadth);
     res->area = length*breadth;
     return SUCCESS;

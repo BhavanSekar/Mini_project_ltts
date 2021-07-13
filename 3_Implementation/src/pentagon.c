@@ -16,6 +16,9 @@ error_code pentagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 5*side;
     res->area = (1/4)*sqrt(5*(5+(2*sqrt(5))))*pow(side,2);
     res->interior_angle = 108;

@@ -55,6 +55,7 @@ RUN_TEST(test_three_dim_other_SUCCESS);
 return UNITY_END();
 }
 
+//Definition of test function for NULL case
 void test_regular_polygon_NULL(void){
     TEST_ASSERT_EQUAL(NULL,equilateral_triangle(0,&reg));
     TEST_ASSERT_EQUAL(NULL,square(0,&reg));
@@ -66,6 +67,8 @@ void test_regular_polygon_NULL(void){
     TEST_ASSERT_EQUAL(NULL,decagon(0,&reg));
 }
 
+
+//Definition of test function for SUCCESS case
 void test_regular_polygon_SUCCESS(void){
     
     regular_polygon *test = {9,3.89711,60.0,120.0};
@@ -86,35 +89,52 @@ void test_regular_polygon_SUCCESS(void){
     TEST_ASSERT_EQUAL(SUCCESS,pentagon(-5,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 
-
-    //yet to be done
-    regular_polygon *test = {9,3.89711,60.0,120.0};
+    regular_polygon *test = {18,23.38269,120.0,60.0};
     TEST_ASSERT_EQUAL(SUCCESS,hexagon(3,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
     TEST_ASSERT_EQUAL(SUCCESS,hexagon(-3,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 
-    regular_polygon *test = {9,3.89711,60.0,120.0};
+    regular_polygon *test = {28,58.1426,128.57,51.43};
     TEST_ASSERT_EQUAL(SUCCESS,heptagon(4,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
     TEST_ASSERT_EQUAL(SUCCESS,heptagon(-4,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 
-    regular_polygon *test = {9,3.89711,60.0,120.0};
+    regular_polygon *test = {32,77.25483,135.0,45.0};
     TEST_ASSERT_EQUAL(SUCCESS,octagon(4,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
     TEST_ASSERT_EQUAL(SUCCESS,octagon(-4,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 
-    regular_polygon *test = {9,3.89711,60.0,120.0};
+    regular_polygon *test = {27,55.63642,140.0,40.0};
     TEST_ASSERT_EQUAL(SUCCESS,enneagon(3,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
     TEST_ASSERT_EQUAL(SUCCESS,enneagon(-3,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 
-    regular_polygon *test = {9,3.89711,60.0,120.0};
+    regular_polygon *test = {50,192.35522,144.0,36.0};
     TEST_ASSERT_EQUAL(SUCCESS,decagon(5,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
     TEST_ASSERT_EQUAL(SUCCESS,decagon(-5,&reg));
+    TEST_ASSERT_EQUAL_PTR(test,reg);
+}
+
+//Definition of test function for NULL case
+void test_irregular_and_curves_NULL(void){
+    TEST_ASSERT_EQUAL(NULL,rectangle(0,2,&reg));
+    TEST_ASSERT_EQUAL(NULL,rhombus(3,0,&reg));
+    TEST_ASSERT_EQUAL(NULL,parallellogram(0,3,0,&reg));
+    TEST_ASSERT_EQUAL(NULL,trapezium(0,2,5,0,0,&reg));
+    TEST_ASSERT_EQUAL(NULL,isosceles_triangle(0,2,&reg));
+    TEST_ASSERT_EQUAL(NULL,scalene_triangle(4,6,0,&reg));
+}
+
+//Definition of test function for SUCCESS case
+void test_irregular_and_curves_SUCCESS(void){
+    irregular_and_curves *test = {9,3.89711};
+    TEST_ASSERT_EQUAL(SUCCESS,rectangle(3,2,&reg));
+    TEST_ASSERT_EQUAL_PTR(test,reg);
+    TEST_ASSERT_EQUAL(SUCCESS,rectangle(3,-2,&reg));
     TEST_ASSERT_EQUAL_PTR(test,reg);
 }

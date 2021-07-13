@@ -16,6 +16,10 @@ error_code isosceles_triangle(double side, double base, irregular_and_curves *re
     if(side == 0.0 || base == 0.0){
         return NULL;
     }
+    else if(side<0 || base<0){
+        side = fabs(side);
+        base = fabs(base);
+    }
     res->perimeter = 2*side + base;
     res->area = (1/2)*(sqrt(pow(side,2) - pow((base/2),2)))*base;
     return SUCCESS;

@@ -16,6 +16,9 @@ error_code enneagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 9*side;
     res->area = (9/4)*pow(side,2)*cot(180/9);
     res->interior_angle = 140;

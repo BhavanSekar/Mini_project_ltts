@@ -16,6 +16,9 @@ error_code decagon(double side, regular_polygon *res){
     if(side==0.0){
         return NULL;
     }
+    else if(side<0){
+        side = fabs(side);
+    }
     res->perimeter = 10*side;
     res->area = (5/2)*pow(side,2)*sqrt(5+(2*sqrt(5)));
     res->interior_angle = 144;

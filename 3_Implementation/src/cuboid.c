@@ -16,6 +16,11 @@ error_code cuboid(double length, double breadth, double height, three_dim *res){
     if(length == 0.0 || breadth == 0.0 || height == 0.0){
         return NULL;
     }
+    else if(length<0 || breadth<0 || height<0){
+        length = fabs(length);
+        breadth = fabs(breadth);
+        height = fabs(height);
+    }
     res->volume = length*breadth*height;
     res->lateral_surface_area = 2*height*(length + breadth);
     res->total_surface_area = 2*((length*breadth) + (breadth*height) + (height*length));

@@ -16,6 +16,10 @@ error_code ellipse(double semi_major_axis, double semi_minor_axis, irregular_and
     if(semi_major_axis == 0.0 || semi_minor_axis == 0.0){
         return NULL;
     }
+    else if(semi_major_axis<0 || semi_minor_axis<0){
+        semi_major_axis = fabs(semi_major_axis);
+        semi_minor_axis = fabs(semi_minor_axis);
+    }
     res->perimeter = 2*sqrt((pow(semi_major_axis,2)+pow(semi_minor_axis,2))/2)*PI;
     res->area = semi_major_axis*semi_minor_axis*PI;
     return SUCCESS;
